@@ -8,7 +8,6 @@ async function saveTimeMark(payload)
 {
     try 
     {
-        console.log("payload", payload)
         const { time } = payload
         await crud.save(TimeMark, time)
         await sync
