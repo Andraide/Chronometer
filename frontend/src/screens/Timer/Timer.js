@@ -9,12 +9,13 @@ import './Timer.css'
 const element = <FontAwesomeIcon icon={faClock} />
 
 const Timer = () => {
-  const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0)
+  const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset, handleSet } = useTimer(0)
 
   return (
     <div className="app">
-      <h3>Chronometer {element}</h3>
+      
       <div className='stopwatch-card'>
+        <h3>Chronometer {element}</h3>
         <p>{formatTime(timer)}</p>
         <div className='buttons'>
           {
@@ -26,6 +27,7 @@ const Timer = () => {
               )
           }
           <button onClick={handleReset} disabled={!isActive}>Reset</button>
+          <button onClick={handleSet} disabled={!isActive}>Set</button>
         </div>
       </div>
     </div>

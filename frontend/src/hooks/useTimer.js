@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { timeService } from '../services/time.service'
 
 const useTimer = (initialState = 0) => {
   const [timer, setTimer] = useState(initialState)
@@ -33,7 +34,12 @@ const useTimer = (initialState = 0) => {
     setTimer(0)
   }
 
-  return { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset }
+  const handleSet = () => {
+    timeService.setTime(timer).then(() => console.log("Time saved!"))
+  }
+  
+
+  return { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset, handleSet }
 }
 
 export default useTimer

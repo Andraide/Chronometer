@@ -22,9 +22,12 @@ async function testDb()
 function saveTimeMark(req, res, next)
 {
     console.log("Body", req.body)
-    moviesService.saveTimeMark()
+    moviesService.saveTimeMark(req.body)
         .then(timeMarks => res.json(timeMarks))
-        .catch(err => next(err));
+        .catch(err => {
+            next(err)
+            console.log("Error", err)
+        });
 }
 
 module.exports = router;
